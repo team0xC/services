@@ -1,0 +1,24 @@
+server {
+        listen 6666 default_server;
+        listen [::]:6666 default_server;
+
+        root /home/chall/service/ro;
+
+        index index.php index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+        
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+        }
+
+        location ~ /\.ht {
+                deny all;
+        }
+
+}

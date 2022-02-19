@@ -1,0 +1,15 @@
+[www]
+
+user = chall
+group = chall
+
+listen = /run/php/php7.2-fpm.sock
+
+listen.owner = chall
+listen.group = chall
+
+pm = dynamic
+pm.max_children = 5
+pm.start_servers = 2
+pm.min_spare_servers = 1
+pm.max_spare_servers = 3

@@ -1,0 +1,70 @@
+version: '3.2'
+services:
+      backup:
+        image: backup
+        build: ./backup
+        volumes:
+        - type: bind
+          source: ./backup/ro
+          target: /home/chall/service/ro
+          read_only: true
+        - type: bind
+          source: ./backup/rw
+          target: /home/chall/service/rw
+        - type: bind
+          source: ./backup/append
+          target: /home/chall/service/append
+        ports:
+        - "10001:6666"
+        restart: always
+      saywhat:
+        image: saywhat
+        build: ./saywhat
+        volumes:
+        - type: bind
+          source: ./saywhat/ro
+          target: /home/chall/service/ro
+          read_only: true
+        - type: bind
+          source: ./saywhat/rw
+          target: /home/chall/service/rw
+        - type: bind
+          source: ./saywhat/append
+          target: /home/chall/service/append
+        ports:
+        - "10002:6666"
+        restart: always
+      flaskids:
+        image: flaskids
+        build: ./flaskids
+        volumes:
+        - type: bind
+          source: ./flaskids/ro
+          target: /home/chall/service/ro
+          read_only: true
+        - type: bind
+          source: ./flaskids/rw
+          target: /home/chall/service/rw
+        - type: bind
+          source: ./flaskids/append
+          target: /home/chall/service/append
+        ports:
+        - "10003:6666"
+        restart: always
+      sampleak:
+        image: sampleak
+        build: ./sampleak
+        volumes:
+        - type: bind
+          source: ./sampleak/ro
+          target: /home/chall/service/ro
+          read_only: true
+        - type: bind
+          source: ./sampleak/rw
+          target: /home/chall/service/rw
+        - type: bind
+          source: ./sampleak/append
+          target: /home/chall/service/append
+        ports:
+        - "10004:6666"
+        restart: always
