@@ -1,0 +1,5 @@
+Error HTTP/1.1 500 Internal Server Error
+Connection: close
+Content-Type: text/plain
+
+Internal Server Error
